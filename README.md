@@ -11,7 +11,7 @@ Esta aplicación simula el comportamiento de un torniquete de acceso físico que
    - Sincroniza Gradle.
    - Ejecuta en un emulador con API 26 o superior.
 
-## 🔌 Conexión con el Backend (Laravel + MQTT)
+## Conexión con el Backend (Laravel + MQTT)
 
 Para que el backend reciba los datos, debe estar escuchando el broker MQTT al que la aplicación publica los eventos.
 
