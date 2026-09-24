@@ -31,7 +31,7 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1,INDEX.LIST,io.netty.versions.properties}"
+            excludes += "/META-INF/{AL2.0,LGPL2.1,INDEX.LIST,io.netty.versions.properties,NOTICE.md,LICENSE.md,DEPENDENCIES}"
         }
     }
 }
@@ -48,7 +48,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.mqtt.client)
+    implementation(libs.qpid.jms)
     implementation(libs.gson)
 
     testImplementation(libs.junit)

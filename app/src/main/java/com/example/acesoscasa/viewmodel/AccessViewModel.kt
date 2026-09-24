@@ -4,7 +4,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.acesoscasa.data.AccessEventDto
-import com.example.acesoscasa.network.MqttManager
+import com.example.acesoscasa.network.AmqManager
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -98,16 +98,16 @@ class AccessViewModel : ViewModel() {
         val payload = Gson().toJson(event)
 
         return try {
-            val success = MqttManager.publish("torniquete/acceso", payload)
+            val success = AmqManager.publish("torniquete.acceso", payload)
             if (success) {
-                addLog("Éxito (MQTT): Mensaje enviado para $userId")
+                addLog("Éxito (AMQ/AMQP): Mensaje enviado para $userId")
                 true
             } else {
-                addLog("Error (MQTT): No se pudo publicar el mensaje", true)
+                addLog("Error (AMQ/AMQP): No se pudo enviar el mensaje", true)
                 false
             }
         } catch (e: Exception) {
-            addLog("Error de Red MQTT: ${e.localizedMessage}", true)
+            addLog("Error de Red AMQ: ${e.localizedMessage}", true)
             false
         } finally {
             _isSending.value = false

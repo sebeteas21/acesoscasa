@@ -11,7 +11,7 @@ composeBom = "2026.02.01"
 retrofit = "3.0.0"
 okhttp = "5.5.0"
 navigationCompose = "2.10.1"
-mqtt = "1.4.0"
+qpidJms = "2.11.0"
 gson = "2.10.1"
 
 [libraries]
@@ -36,8 +36,8 @@ okhttp-lib = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "o
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
-# MQTT & JSON
-mqtt-client = { group = "com.hivemq", name = "hivemq-mqtt-client", version.ref = "mqtt" }
+# AMQ & JSON
+qpid-jms = { group = "org.apache.qpid", name = "qpid-jms-client", version.ref = "qpidJms" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 [plugins]
