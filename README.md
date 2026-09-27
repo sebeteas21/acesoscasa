@@ -5,20 +5,20 @@ Esta aplicación simula el comportamiento de un torniquete de acceso físico que
 ## Ejecución del Proyecto
 
 1. **Requisitos**: Android Studio Ladybug o superior, JDK 17+.
-2. **Configuración del Broker**: La aplicación está configurada por defecto para conectarse a un broker MQTT en `10.0.2.2` (localhost desde el emulador de Android) en el puerto `1883`.
+2. **Configuración del Broker**: La aplicación está configurada por defecto para conectarse a un broker AMQ / AMQP (como ActiveMQ Artemis) en `10.0.2.2` (localhost desde el emulador de Android) en el puerto `5672`.
 3. **Instalación**:
    - Clona el repositorio.
    - Sincroniza Gradle.
    - Ejecuta en un emulador con API 26 o superior.
 
-## Conexión con el Backend (Laravel + MQTT)
+## Conexión con el Backend (Laravel + AMQP / ActiveMQ)
 
-Para que el backend reciba los datos, debe estar escuchando el broker MQTT al que la aplicación publica los eventos.
+Para que el backend reciba los datos, debe estar escuchando el broker AMQP al que la aplicación envía los eventos mediante JMS.
 
 ### Datos de Integración:
-- **Protocolo**: MQTT v5
-- **Broker (Local)**: `10.0.2.2:1883`
-- **Topic de Publicación**: `torniquete/acceso`
+- **Protocolo**: AMQP 1.0 (JMS / Qpid JMS)
+- **Broker (Local)**: `amqp://10.0.2.2:5672`
+- **Destino / Cola (Queue)**: `torniquete.acceso`
 - **Formato de Mensaje**: JSON
 
 ### Estructura del Payload (JSON):
@@ -31,3 +31,4 @@ Al registrar un acceso, la app envía un mensaje con la siguiente estructura:
   "timestamp": "2026-09-20T14:42:20.210",
   "status": "GRANTED"
 }
+```
